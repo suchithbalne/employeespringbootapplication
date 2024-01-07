@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path="/employees")
 public class EmployeeController {
     
-    @Autowired
     private EmployeeManager employeeManager;
+    @Autowired
+    public EmployeeController(EmployeeManager employeeManager) {
+        this.employeeManager = employeeManager;
+    }
 
     @GetMapping(path="/", produces="application/json")
     public Employees getEmployees(){
